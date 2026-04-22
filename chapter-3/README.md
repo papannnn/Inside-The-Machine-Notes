@@ -146,5 +146,34 @@ From this equation, we can reduce it in two ways.
 
 By reducing the number of instruction per program, or increasing processor completion rate.
 
-### The Relationship Between Completion Rate and Program Execution Time
+### Instruction Throughput and Pipeline Stalls
 
+Pipeline isn't a free performance improvement, it adds complexity.
+
+#### Instruction Throughput
+
+Pipeline instruction is not always be 1 instruction / clock. There's a moment where the step is not filled with instruction, that means the throughput is 0 instruction / clock.
+
+#### Pipeline Stalls
+
+In real world, the pipeline state is not always full pipeline and pipeline being filled.
+
+Sometimes the pipeline just hang for multiple cycles, there's some reason for that.
+
+When pipeline is hang, all other pipeline still continue normally, but the one that hang just can't continue.
+
+That means, there will be a gap and it will snowballing, making other pipeline idle.
+
+![Pipeline stalls in a four stage pipeline](img/chapter-3-img-8.png)
+
+The more stall happens in the pipeline, the more throughput rate will go down.
+
+![Average instruction throughput of a four stage pipeline with a two cycle stall](img/chapter-3-img-9.png)
+
+![Average instruction throughput of a four stage pipeline with a 10 cycle stall](img/chapter-3-img-10.png)
+
+### Instruction Latency and Pipeline Stalls
+
+Instruction latency is a number of clock cycles it takes for instruction to pass through the pipeline.
+
+In real world processor instruction latency is not necessary fixed, because instruction can possibily hanged
